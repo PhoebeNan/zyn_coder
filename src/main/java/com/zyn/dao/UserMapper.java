@@ -1,4 +1,4 @@
-package com.zyn.mapper;
+package com.zyn.dao;
 
 import org.apache.ibatis.annotations.Mapper;
 

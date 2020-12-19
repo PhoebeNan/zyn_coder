@@ -9,7 +9,7 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.ClassPathResource;
 
 @SpringBootApplication
-@MapperScan("com.zyn.mapper")//要扫描的dao包
+@MapperScan(basePackages = {"com.zyn.dao","com.zyn.mbg.mapper"})//要扫描的dao包
 public class SpringCloudTestApplication {
 
     public static void main(String[] args) {

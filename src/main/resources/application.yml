@@ -2,24 +2,28 @@
 
 spring:
   datasource:
-    dynamic:
-      primary: master #设置默认的数据源或者数据源组
-      datasource:
-        master:
-          url: jdbc:mysql://localhost:3306/spring_batch_left?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC
-          username: root
-          password: 1234
-          driver-class-name: com.mysql.cj.jdbc.Driver
-        t_pk:
-          url: jdbc:mysql://localhost:3306/spring_batch_right?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC
-          username: root
-          password: 1234
-          driver-class-name: com.mysql.cj.jdbc.Driver
-        t_card:
-          url: jdbc:mysql://localhost:3306/spring_batch?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC
-          username: root
-          password: 1234
-          driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/macrozheng?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 1234
+#  datasource:
+#    dynamic:
+#      primary: master #设置默认的数据源或者数据源组
+#      datasource:
+#        master:
+#          url: jdbc:mysql://localhost:3306/spring_batch_left?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC
+#          username: root
+#          password: 1234
+#          driver-class-name: com.mysql.cj.jdbc.Driver
+#        t_pk:
+#          url: jdbc:mysql://localhost:3306/spring_batch_right?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC
+#          username: root
+#          password: 1234
+#          driver-class-name: com.mysql.cj.jdbc.Driver
+#        t_card:
+#          url: jdbc:mysql://localhost:3306/spring_batch?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC
+#          username: root
+#          password: 1234
+#          driver-class-name: com.mysql.cj.jdbc.Driver
 
 
 
@@ -28,7 +32,10 @@ mybatis:
     cache-enabled: false #禁用二级缓存
     local-cache-scope: statement #每次查询结束都会清除掉一级缓存
     map-underscore-to-camel-case: true
-  mapper-locations: classpath:mapper/*Mapper.xml
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations:
+    - classpath:mapper/*.xml
+    - classpath*:com/**/mapper/*.xml
 
 
 server:

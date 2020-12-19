@@ -7,7 +7,7 @@ import java.util.*;
  * @create 2020/11/27 15:59
  * @Description
  */
-public class Main {
+public class Test01 {
 
 
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.zyn.controller;
+package com.zyn.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -3,7 +3,7 @@
 
 ### CentOS7.0 nantian01
 ### redis相关
-redis.conf路径： /usr/local/redis/bin
+redis.conf路径：  cd /usr/local/redis/bin
 
 启动   ./redis-server redis.conf
 

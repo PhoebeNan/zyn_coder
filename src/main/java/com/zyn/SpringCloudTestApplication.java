@@ -23,7 +23,10 @@ public class SpringCloudTestApplication {
         PropertySourcesPlaceholderConfigurer configurer = new PropertySourcesPlaceholderConfigurer();
         YamlPropertiesFactoryBean yaml = new YamlPropertiesFactoryBean();
 
-        yaml.setResources(new ClassPathResource("redis/redis.yml"));//File引入
+        ClassPathResource redisClassPathResource = new ClassPathResource("redis/redis.yml");
+        ClassPathResource threadClassPathResource = new ClassPathResource("thread/thread.yml");
+        yaml.setResources(redisClassPathResource,threadClassPathResource);//File引入
+
         configurer.setProperties(yaml.getObject());
         return configurer;
     }

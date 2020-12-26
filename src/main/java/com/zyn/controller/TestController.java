@@ -4,6 +4,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,16 +17,16 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-@Api(tags={"zyn的功能接口"})
+@Api(tags = {"zyn的功能接口"})
 @RestController
 public class TestController {
 
 
     //D:\txtDir
-    @ApiOperation(value="将一个目录下所有文件名称中的空格和()去除掉",notes="注意问题点，例如：D:\\txtDir")
+    @ApiOperation(value = "将一个目录下所有文件名称中的空格和()去除掉", notes = "注意问题点，例如：D:\\txtDir")
     @GetMapping("/liuManRenameFile")
-    public String liuManRenameFile(@ApiParam(name="dir",value="文件路径",required = true)
-                                       @RequestParam("dir") String dir) {
+    public String liuManRenameFile(@ApiParam(name = "dir", value = "文件路径", required = true)
+                                   @RequestParam("dir") String dir) {
 
         //初始化 找到文件夹
         File file = new File(dir);
@@ -57,26 +58,48 @@ public class TestController {
     }
 
 
-    @GetMapping("/zyn")
-    @ApiOperation(value="测试我的云服务器接口",notes="注意问题点")
-    public Map<String, Object> zyn() {
+    @GetMapping("/zyn/{sleep}")
+    @ApiOperation(value = "测试我的云服务器接口", notes = "注意问题点")
+    public String zyn(@PathVariable String sleep) {
 
-        long currentTime = System.currentTimeMillis();
 
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy年-MM月dd日-HH时mm分ss秒");
+        System.out.println("==========");
+        try {
+            Thread.sleep(Long.parseLong(sleep));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
-        Date date = new Date(currentTime);
+        if (flag) {
+            System.out.println("***********");
+        } else {
+            System.out.println("$$$$$$$$$$$$$");
+        }
 
-        String format = formatter.format(date);
 
-        Map<String, Object> map = new HashMap<>();
-        map.put("result:","赵亚楠的云服务器");
-        map.put("当前时间为:",format);
-
-        return map;
+        return "success";
     }
 
 
+    Boolean flag = true;
+
+    @GetMapping("/batch")
+    @ApiOperation(value = "测试停止接口", notes = "注意问题点")
+    public Map<String, Object> batch() {
+
+
+        flag = !flag;
+
+        long currentTime = System.currentTimeMillis();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy年-MM月dd日-HH时mm分ss秒");
+        Date date = new Date(currentTime);
+        String format = formatter.format(date);
+        Map<String, Object> map = new HashMap<>();
+        map.put("result:", "赵亚楠的云服务器");
+        map.put("当前时间为:", format);
+
+        return map;
+    }
 
 
 }

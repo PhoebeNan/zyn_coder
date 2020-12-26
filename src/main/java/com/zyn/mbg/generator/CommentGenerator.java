@@ -1,4 +1,4 @@
-package com.zyn.mbg;
+package com.zyn.mbg.generator;
 
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;

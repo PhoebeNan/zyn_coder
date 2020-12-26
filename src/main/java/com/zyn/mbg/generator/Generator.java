@@ -1,4 +1,4 @@
-package com.zyn.mbg;
+package com.zyn.mbg.generator;
 
 import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.config.Configuration;
@@ -36,5 +36,7 @@ public class Generator {
         for (String warning : warnings) {
             System.out.println(warning);
         }
+
+        System.out.println("代码生成成功");
     }
 }

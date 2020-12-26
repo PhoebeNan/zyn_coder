@@ -13,17 +13,11 @@ public class Test01 {
     public static void main(String[] args) {
 
 
-        String aa = new String("aa");
-        String aaa = new String("aa");
+        String a = "a=b";
 
-        String a = "0";
-        System.out.println(a);
+        System.out.println(a.split("=")[0]);
 
-        String b = "0";
-        System.out.println(a==b);
     }
-
-
 
 
 }

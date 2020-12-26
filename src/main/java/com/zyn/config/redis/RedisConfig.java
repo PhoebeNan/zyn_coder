@@ -1,4 +1,4 @@
-package com.zyn.redis.config;
+package com.zyn.config.redis;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

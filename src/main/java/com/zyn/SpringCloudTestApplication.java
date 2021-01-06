@@ -25,7 +25,8 @@ public class SpringCloudTestApplication {
 
         ClassPathResource redisClassPathResource = new ClassPathResource("redis/redis.yml");
         ClassPathResource threadClassPathResource = new ClassPathResource("thread/thread.yml");
-        yaml.setResources(redisClassPathResource,threadClassPathResource);//File引入
+        ClassPathResource jwtClassPathResource = new ClassPathResource("jwt/jwt.yml");
+        yaml.setResources(redisClassPathResource,threadClassPathResource,jwtClassPathResource);//File引入
 
         configurer.setProperties(yaml.getObject());
         return configurer;

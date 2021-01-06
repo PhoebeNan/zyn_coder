@@ -65,6 +65,10 @@ public class SpringCloudTestApplicationTests {
     public void contextLoads2() {
 
 
+        HashMap<Object, Object> map = new HashMap<>();
+        Object o = map.get("123");
+        System.out.println(o);
+
         System.out.println("=====");
 
 

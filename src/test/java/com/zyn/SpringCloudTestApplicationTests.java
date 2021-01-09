@@ -1,5 +1,7 @@
 package com.zyn;
 
+import com.zyn.aop.ApplicationContextUtil;
+import com.zyn.aop.TargetClass;
 import com.zyn.redis.utils.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -13,7 +15,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -27,9 +31,33 @@ public class SpringCloudTestApplicationTests {
     @Autowired
     private TaskExecutor taskExecutor;
 
+
+    @Test
+    public void testAOP() {
+
+        //2、从IOC容器中获取bean的实例
+        TargetClass targetClass = (TargetClass) ApplicationContextUtil.getBean(TargetClass.class);
+
+        //3、使用bean
+        String result = targetClass.joint("spring","aop");
+        String result2 = targetClass.joint2("spring","aop");
+
+    }
+
+
+
+
     @Test
     public void contextLoads() {
 
+
+        Set<String> strings = new HashSet<>();
+        strings.add("2");
+        strings.add("23");
+        strings.add("23");
+
+        System.out.println(strings);
+        System.out.println(String.valueOf(strings));
 
         Integer[] x = {1};
 
@@ -116,6 +144,7 @@ public class SpringCloudTestApplicationTests {
 //
 //        System.out.println(redisUtil.hget("zyn","a"));
 //        System.out.println(redisUtil.hget("zyn","b"));
+
 
 
     }

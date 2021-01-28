@@ -1,17 +1,11 @@
 package com.zyn.test;
 
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.junit.Test;
+import org.springframework.util.CollectionUtils;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @Author 赵亚楠
@@ -24,24 +18,22 @@ public class Test01 {
     public static void main(String[] args) {
 
 
-        HashMap<Object, Object> map = new HashMap<>();
-        HashMap<Object, Object> map2= new HashMap<>();
-        List<Object> list = new ArrayList<>();
-        list.add(map);
-        list.add(map2);
+//       Map<String, List<String>> map = new HashMap<>();
+//
+//
+//       map.put(null,null);
+//
+//        List<String> list = map.get("zyn");
+//        if (CollectionUtils.isEmpty(list)){
+//            list = new ArrayList<>();
+//            map.put("zyn",list);
+//        }
+//
+//        System.out.println("======");
 
-        System.out.println(list.size());
+        Map<String, Object> map = new HashMap<>();
+        String o = (String)map.get("zyn");
 
-        if (map.isEmpty()){
-            System.out.println("===");
-        }
-
-        if (map2.isEmpty()){
-            System.out.println("===2222");
-        }
-
-        HashMap<Object, Object> map3 = null;
-        System.out.println(map3.get(""));
 
     }
 

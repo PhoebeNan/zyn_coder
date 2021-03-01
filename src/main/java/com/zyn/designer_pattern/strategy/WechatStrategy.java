@@ -3,7 +3,7 @@ package com.zyn.designer_pattern.strategy;
 
 import org.springframework.stereotype.Component;
 
-@Component("wechatStrategy")
+@Component
 public class WechatStrategy implements Strategy{
 
     @Override

@@ -1,6 +1,5 @@
 package com.zyn.service.impl;
 
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.zyn.mbg.mapper.PmsBrandMapper;
 import com.zyn.mbg.model.PmsBrand;

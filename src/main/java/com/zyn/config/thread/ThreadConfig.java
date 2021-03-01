@@ -28,7 +28,7 @@ public class ThreadConfig {
     private Integer queueCapacity;
 
     @Bean
-    public TaskExecutor taskExecutor() {
+    public ThreadPoolTaskExecutor taskExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         executor.setCorePoolSize(corePoolSize);
         executor.setKeepAliveSeconds(keepAliveSeconds);

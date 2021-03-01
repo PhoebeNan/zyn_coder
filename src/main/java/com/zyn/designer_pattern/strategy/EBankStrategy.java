@@ -3,7 +3,7 @@ package com.zyn.designer_pattern.strategy;
 
 import org.springframework.stereotype.Component;
 
-@Component("eBankStrategy")
+@Component
 public class EBankStrategy implements Strategy{
 
     @Override

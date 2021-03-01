@@ -3,16 +3,24 @@ package com.zyn.controller;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.springframework.core.task.TaskExecutor;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,6 +28,19 @@ import java.util.regex.Pattern;
 @Api(tags = {"zyn的功能接口"})
 @RestController
 public class TestController {
+
+
+
+    @GetMapping("/seata")
+    public String seata()  {
+
+        System.out.println("=======");
+       return "success";
+    }
+
+
+
+
 
 
     //D:\txtDir
@@ -57,23 +78,52 @@ public class TestController {
         return "success";
     }
 
+    @Resource
+    private ThreadPoolTaskExecutor executor;
 
-    @GetMapping("/zyn/{sleep}")
+    @GetMapping("/zyn")
     @ApiOperation(value = "测试我的云服务器接口", notes = "注意问题点")
-    public String zyn(@PathVariable String sleep) {
+    public String zyn() throws ExecutionException, InterruptedException {
+
+        List<Future<Integer>> list = new ArrayList<>();
 
 
-        System.out.println("==========");
-        try {
-            Thread.sleep(Long.parseLong(sleep));
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        for (int i = 0; i < 2; i++) {
+
+            int finalI = i;
+            Future<Integer> submit = executor.submit(new Callable<Integer>() {
+                @Override
+                public Integer call() throws Exception {
+
+                    System.out.println("******111");
+                    System.out.println(Thread.currentThread().getName());
+
+                    System.out.println("******2");
+
+                    if (finalI == 0) {
+                        return 0;
+
+                    } else {
+                        return 1;
+                    }
+
+                }
+            });
+
+            if (submit.get()==null){
+                System.out.println("zyn");
+            }
+            list.add(submit);
+
+            System.out.println("******");
+
         }
 
-        if (flag) {
-            System.out.println("***********");
-        } else {
-            System.out.println("$$$$$$$$$$$$$");
+        for (Future<Integer> future : list) {
+            Integer integer = future.get();
+
+            System.out.println(integer+"=======");
+
         }
 
 
